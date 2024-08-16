@@ -1,5 +1,6 @@
 ﻿using Inventario.COMMON.Entidades;
 using Inventario.COMMON.Interfaces;
+using LiteDB; 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,23 +9,82 @@ using System.Threading.Tasks;
 
 namespace Inventario.DAL
 {
-    public class RepositorioDeEmpleados : IRepositorio<Empleado> 
+    public class RepositorioDeEmpleados : IRepositorio<Empleado>
     {
-        public List<Empleado> Read => throw new NotImplementedException();
+        private readonly string DBName = "Inventario.db";
+        private readonly string TableName = "Empleados";
+        public List<Empleado> Read
+        {
+            get
+            {
+                List<Empleado> datos = new List<Empleado>();
+                using (var db = new LiteDatabase(DBName))
+                {
+                    datos = db.GetCollection<Empleado>(TableName).FindAll().ToList();
+                }
+                return datos;
+            }
+        }
 
         public bool Create(Empleado entidad)
         {
-            throw new NotImplementedException();
+            entidad.Id = Guid.NewGuid().ToString();
+            try
+            {
+                using (var db = new LiteDatabase(DBName))
+                {
+                    var coleccion = db.GetCollection<Empleado>(TableName);
+                    coleccion.Insert(entidad);
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public bool Delete(Empleado entidad)
+        public bool Delete(string id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var db = new LiteDatabase(DBName))
+                {
+                    var coleccion = db.GetCollection<Empleado>(TableName);
+                    var empleado = coleccion.FindOne(e => e.Id.Equals(id));
+                    if (empleado != null)
+                    {
+                        coleccion.Delete(empleado.Id);
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public bool UpDate(Empleado entidadOriginal, Empleado entidadModificada)
+
+        public bool UpDate(string Id, Empleado entidadModificada)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var db = new LiteDatabase(DBName))
+                {
+                    var coleccion = db.GetCollection<Empleado>(TableName);
+                    coleccion.Insert(entidadModificada); 
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
+
 }
+
+
