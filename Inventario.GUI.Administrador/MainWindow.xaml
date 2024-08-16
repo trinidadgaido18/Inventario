@@ -1,0 +1,55 @@
+﻿<Window x:Class="Inventario.GUI.Administrador.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Inventario.GUI.Administrador"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <TabControl>
+         <TabItem Header="Empleados">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=" auto"/>
+                    <RowDefinition Height=" auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <WrapPanel Grid.Row = "0" >
+                    <Button x:Name="btnEmpleadosNuevo" Click="btnEmpleadosNuevo_Click" >Nuevo</Button>
+                    <Button x:Name="btnEmpleadosEditar" Click="btnEmpleadosEditar_Click">Editar</Button>
+                    <Button x:Name="btnEmpleadosGuardar" Click="btnEmpleadosGuardar_Click">Guardar</Button>
+                    <Button x:Name="btnEmpledosCancelar" Click="btnEmpledosCancelar_Click">Cancelar</Button>
+                    <Button x:Name="btnEmpleadosEliminar" Click="btnEmpleadosEliminar_Click">Eliminar</Button> 
+                </WrapPanel>
+                <WrapPanel Grid.Row="1">
+                    <StackPanel Orientation ="Horizontal"> 
+                        <TextBlock>Id:</TextBlock>
+                        <TextBlock x:Name= "txbEmpleados"></TextBlock> 
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock>Nombre:</TextBlock>
+                        <TextBlock x:Name="txbEmpleadosId"  Width ="200"></TextBlock>
+                    </StackPanel>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+                            <TextBlock>Apellidos:</TextBlock>
+                            <TextBlock x:Name="txbEmpleadosApellidos"  Width ="200"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                   
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock>Area:</TextBlock>
+                        <TextBlock x:Name="txbEmpleadosArea"  Width ="200"></TextBlock>
+                    </StackPanel>
+                </WrapPanel> 
+                <DataGrid Name="dtgEmpleados" Grid.Row="2"/> 
+            </Grid>
+          </TabItem>
+         <TabItem Header="Materiales">
+
+         </TabItem>
+         <TabItem Header="Reportes">
+
+         </TabItem>
+    </TabControl>
+    </Window>

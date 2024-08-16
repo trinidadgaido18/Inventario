@@ -38,5 +38,15 @@ namespace Inventario.BIZ
         {
            return  repositorio.UpDate(entidad);
         }
+
+        public List<Vale> ValesEnIntevalo(DateTime inicio, DateTime fin)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Vale> ValesPorLiquidar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
