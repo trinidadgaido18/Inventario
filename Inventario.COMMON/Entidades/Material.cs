@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Inventario.COMMON.Entidades
 {
-    public class Material : Base 
+    public class Material : Base
     {
-        public required string Nombre { get; set;}
-        public required string Categoria { get; set;}
-        public int Description { get; set;}  
+        public required string Nombre { get; set; }
+        public required string Categoria { get; set; }
+        public int Description { get; set; }
 
 
     }

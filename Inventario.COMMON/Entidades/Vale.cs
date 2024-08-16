@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Inventario.COMMON.Entidades
 {
-    public class Vale : Base 
+    public class Vale : Base
     {
-        public DateTime FechaHoraSolicitud {  get; set; } 
+        public DateTime FechaHoraSolicitud { get; set; }
         public DateTime FechaEntrega { get; set; }
         public DateTime? FechaEntregaReal { get; set; }
-        public required  List<Material> MaterialesPrestados { get; set; }  
-        public required  Empleado Solicitante { get; set; } 
-        public required Empleado EncargadoDeAlmacen { get; set; } 
+        public required List<Material> MaterialesPrestados { get; set; }
+        public required Empleado Solicitante { get; set; }
+        public required Empleado EncargadoDeAlmacen { get; set; }
     }
 }

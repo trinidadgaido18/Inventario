@@ -8,6 +8,6 @@ namespace Inventario.COMMON.Entidades
 {
     public abstract class Base
     {
-        public required  string Id { get; set; }  
+        public required string Id { get; set; }
     }
 }

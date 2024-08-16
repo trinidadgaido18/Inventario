@@ -9,31 +9,32 @@ using System.Threading.Tasks;
 
 namespace Inventario.DAL
 {
-    public class RepositorioDeEmpleados : IRepositorio<Empleado>
+    public class RepositorioDeMaterial : IRepositorio<Material>
     {
-        private readonly string DBName = "Inventario.db";
-        private readonly string TableName = "Empleados";
-        public List<Empleado> Read
+        private readonly string DBName = "Inventario,db";
+        private readonly string TableName = " Materiales";
+
+        public List<Material> Read
         {
             get
             {
-                List<Empleado> datos = new List<Empleado>();
+                List<Material> datos = new List<Material>();
                 using (var db = new LiteDatabase(DBName))
                 {
-                    datos = db.GetCollection<Empleado>(TableName).FindAll().ToList();
+                    datos = db.GetCollection<Material>(TableName).FindAll().ToList();
                 }
                 return datos;
             }
         }
 
-        public bool Create(Empleado entidad)
+        public bool Create(Material entidad)
         {
             entidad.Id = Guid.NewGuid().ToString();
             try
             {
                 using (var db = new LiteDatabase(DBName))
                 {
-                    var coleccion = db.GetCollection<Empleado>(TableName);
+                    var coleccion = db.GetCollection<Material>(TableName);
                     coleccion.Insert(entidad);
                 }
                 return true;
@@ -50,7 +51,7 @@ namespace Inventario.DAL
             {
                 using (var db = new LiteDatabase(DBName))
                 {
-                    var coleccion = db.GetCollection<Empleado>(TableName);
+                    var coleccion = db.GetCollection<Material>(TableName);
                     var empleado = coleccion.FindOne(e => e.Id.Equals(id));
                     if (empleado != null)
                     {
@@ -66,14 +67,13 @@ namespace Inventario.DAL
             }
         }
 
-
-        public bool UpDate(string Id, Empleado entidadModificada)
+        public bool UpDate(Material entidadModificada)
         {
             try
             {
                 using (var db = new LiteDatabase(DBName))
                 {
-                    var coleccion = db.GetCollection<Empleado>(TableName);
+                    var coleccion = db.GetCollection<Material>(TableName);
                     coleccion.Insert(entidadModificada);
                 }
                 return true;
@@ -83,13 +83,5 @@ namespace Inventario.DAL
                 return false;
             }
         }
-
-        public bool UpDate(Empleado entidadModificada)
-        {
-            throw new NotImplementedException();
-        }
     }
-
 }
-
-
