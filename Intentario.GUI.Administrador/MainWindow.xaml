@@ -16,24 +16,24 @@
                 </Grid.RowDefinitions>
                 <WrapPanel Grid.Row = "0" >
                     <Button x:Name="btnEmpleadosNuevo" Click="btnEmpleadosNuevo_Click" >Nuevo</Button>
-                    <Button x:Name="btnEmpleadosEditar" Click="btnEmpleadosEditar_Click">Editar</Button>
+                    <Button x:Name="btnEmpleadosEditar" Click="btnEmpledosEditar_Click">Editar</Button>  
                     <Button x:Name="btnEmpleadosGuardar" Click="btnEmpleadosGuardar_Click">Guardar</Button>
                     <Button x:Name="btnEmpledosCancelar" Click="btnEmpledosCancelar_Click">Cancelar</Button>
-                    <Button x:Name="btnEmpleadosEliminar" Click="btnEmpleadosEliminar_Click">Eliminar</Button>
+                    <Button x:Name ="btnEmpleadosEliminar" Click="btnEmpleadosEliminar_Click">Eliminar</Button> 
                 </WrapPanel>
                 <WrapPanel Grid.Row="1">
                     <StackPanel Orientation ="Horizontal">
                         <TextBlock>Id:</TextBlock>
-                        <TextBlock x:Name= "txbEmpleados"></TextBlock>
+                        <TextBlock x:Name= "txbEmpleadosId" Width="200"></TextBlock> 
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock>Nombre:</TextBlock>
-                        <TextBlock x:Name="txbEmpleadosId"  Width ="200"></TextBlock>
+                        <TextBlock x:Name="txbEmpleadosNombre"  Width ="200"></TextBlock>
                     </StackPanel>
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" >
                             <TextBlock>Apellidos:</TextBlock>
-                            <TextBlock x:Name="txbEmpleadosApellidos"  Width ="200"></TextBlock>
+                            <TextBlock x:Name="txbEmpleadosApellidos" Width ="200"></TextBlock>
                         </StackPanel>
                     </StackPanel>
 
@@ -42,7 +42,7 @@
                         <TextBlock x:Name="txbEmpleadosArea"  Width ="200"></TextBlock>
                     </StackPanel>
                 </WrapPanel>
-                <DataGrid Name="dtgEmpleados" Grid.Row="2"/>
+                <DataGrid Name="dtgEmpleados" Grid.Row="2" IsReadOnly="True"/>
             </Grid>
         </TabItem>
         <TabItem Header="Materiales">
