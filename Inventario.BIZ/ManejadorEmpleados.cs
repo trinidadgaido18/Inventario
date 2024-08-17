@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Inventario.BIZ
 {
-    public class ManejadorEmpleados : IManejadorEmpelados
+    public class ManejadorEmpleados : IManejadorEmpleados
     {
         readonly IRepositorio<Empleado> repositorio;
         public ManejadorEmpleados(IRepositorio<Empleado> repo) 

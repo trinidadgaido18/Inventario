@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Inventario.COMMON.Interfaces
 {
-    public interface IManejadorEmpelados : IManejadorGenerico<Empleado>
+    public interface IManejadorEmpleados : IManejadorGenerico<Empleado>
     {
       List<Empleado> EmpleadosPorArea (string area);
 

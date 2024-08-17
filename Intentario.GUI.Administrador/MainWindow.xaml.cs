@@ -1,17 +1,4 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Inventario.GUI.Administrador
 {
@@ -22,12 +9,12 @@ namespace Inventario.GUI.Administrador
     {
         enum accion
         {
-          Nuevo,
-          Editar
+            Nuevo,
+            Editar
         }
 
-        IManejadorEmpleados manejadorEmpleados; 
-        accion accionEmpleados; 
+        IManejadorEmpleados manejadorEmpleados;
+        accion accionEmpleados;
         private object btnEmpleadosCancelar;
         private object txbEmpleadosNombre;
 
@@ -37,12 +24,12 @@ namespace Inventario.GUI.Administrador
             PonerBotonesEmpleadosEnEdicion(false);
             LimpiarCamposDeEmpleados();
             ActualizarTablaEmpleados();
-            manejadorEmpleados = new ManejadorEmpleados(new RepositorioEmpleados()); 
+            manejadorEmpleados = new ManejadorEmpleados(new RepositorioEmpleados());
         }
 
         private void ActualizarTablaEmpleados()
         {
-            dtgEmpleados.ItemsSource = null; 
+            dtgEmpleados.ItemsSource = null;
             dtgEmpleados.ItemsSource = null;
         }
 
@@ -51,7 +38,7 @@ namespace Inventario.GUI.Administrador
             txbEmpleadosId.Text = "";
             txbEmpleadosApellidos.Inlines.Clear();
             txbEmpleadosArea.Inlines.Clear();
-            txbEmpleadosId.Inlines.Clear(); 
+            txbEmpleadosId.Inlines.Clear();
         }
 
         private void PonerBotonesEmpleadosEnEdicion(bool value)
@@ -59,7 +46,7 @@ namespace Inventario.GUI.Administrador
             btnEmpleadosCancelar = value; 
             btnEmpleadosEditar.IsEnabled = !value;
             btnEmpleadosEliminar.IsEnabled = !value;
-            btnEmpleadosGuardar.IsEnabled = value;
+            btnEmpleadosGuardar.IsEnabled = value; 
             btnEmpleadosNuevo.IsEnabled = !value; 
         }
 
@@ -67,7 +54,7 @@ namespace Inventario.GUI.Administrador
         {
             LimpiarCamposDeEmpleados();
             PonerBotonesEmpleadosEnEdicion(true);
-            accionEmpleados = accion.Nuevo; 
+            accionEmpleados = accion.Nuevo;
         }
 
         private void btnEmpleadosEditar_Click(object sender, RoutedEventArgs e)
@@ -112,3 +99,4 @@ namespace Inventario.GUI.Administrador
     {
     }
 }
+
