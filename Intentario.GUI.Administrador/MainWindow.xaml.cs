@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections;
+using System.Windows;
 
 namespace Inventario.GUI.Administrador
 {
@@ -21,16 +22,16 @@ namespace Inventario.GUI.Administrador
         public MainWindow()
         {
             InitializeComponent();
+
             PonerBotonesEmpleadosEnEdicion(false);
             LimpiarCamposDeEmpleados();
-            ActualizarTablaEmpleados();
-            manejadorEmpleados = new ManejadorEmpleados(new RepositorioEmpleados());
+            ActualizarTablaEmpleados(); 
         }
 
         private void ActualizarTablaEmpleados()
         {
             dtgEmpleados.ItemsSource = null;
-            dtgEmpleados.ItemsSource = null;
+            
         }
 
         private void LimpiarCamposDeEmpleados()
@@ -59,7 +60,7 @@ namespace Inventario.GUI.Administrador
 
         private void btnEmpleadosEditar_Click(object sender, RoutedEventArgs e)
         {
-
+          
         }
 
         private void btnEmpleadosGuardar_Click(object sender, RoutedEventArgs e)
@@ -78,25 +79,6 @@ namespace Inventario.GUI.Administrador
         }
     }
 
-    internal class RepositorioEmpleados
-    {
-        public RepositorioEmpleados()
-        {
-        }
-    }
-
-    internal class ManejadorEmpleados : IManejadorEmpleados
-    {
-        private RepositorioEmpleados repositorioEmpleados;
-
-        public ManejadorEmpleados(RepositorioEmpleados repositorioEmpleados)
-        {
-            this.repositorioEmpleados = repositorioEmpleados;
-        }
-    }
-
-    internal interface IManejadorEmpleados
-    {
-    }
+     
 }
 
