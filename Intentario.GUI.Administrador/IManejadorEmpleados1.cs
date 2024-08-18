@@ -2,12 +2,11 @@
 
 namespace Inventario.GUI.Administrador
 {
-    internal interface IManejadorEmpleados
+    internal interface IManejadorEmpleados1
     {
-        IEnumerable Listar { get; set; }
-
         bool Agregar(string id);
         bool Eliminar(string id);
+        IEnumerable Listar();
         bool Modificar(Empleado emp);
     }
 }
