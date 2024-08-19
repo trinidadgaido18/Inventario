@@ -1,9 +1,9 @@
-﻿<Window x:Class="Inventario.GUI.Administrador.MainWindow"
+﻿<Window x:Class="Inventario.GUI.Administrar.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Inventario.GUI.Administrador"
+        xmlns:local="clr-namespace:Inventario.GUI.Administrar"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <TabControl>
@@ -15,17 +15,18 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <WrapPanel Grid.Row = "0" >
-                    <Button x:Name="btnEmpleadosNuevo" Click="btnEmpleadosNuevo_Click" >Nuevo</Button>
-					<Button x:Name="btnEmpleadosEditar" Click="btnEmpleadosEditar_Click">Editar</Button>
-                    <Button x:Name="btnEmpleadosGuardar" Click="btnEmpleadosGuardar_Click">Guardar</Button>
-                    <Button x:Name="btnEmpledosCancelar" Click="btnEmpledosCancelar_Click">Cancelar</Button>
-					<Button x:Name="btnEmpleadosEliminar" Click="btnEmpleadosEliminar_Click">Eliminar</Button> 
- 
-                </WrapPanel> 
+                    <Button x:Name="BtnEmpleadosNuevoNuevo" Click="BtnEmpleadosNuevoNuevo_Click" >Nuevo</Button>
+                    <Button x:Name="BtnEmpleadosEditarNuevo" Click="BtnEmpleadosEditarNuevo_Click"  >Editar</Button>
+                    <Button x:Name="BtnEmpleadosGuardar" Click="BtnEmpleadosGuardar_Click" >Guardar</Button>
+                    <Button x:Name="BtnEmpledosCancelar" Click="BtnEmpledosCancelar_Click" >Cancelar</Button>
+                    <Button x:Name="BtnEmpleadosEliminar" Click="BtnEmpleadosEliminar_Click">Eliminar</Button> 
+
+
+                </WrapPanel>
                 <WrapPanel Grid.Row="1">
                     <StackPanel Orientation ="Horizontal">
                         <TextBlock>Id:</TextBlock>
-                        <TextBlock x:Name= "txbEmpleadosId" Width="200"></TextBlock> 
+                        <TextBlock x:Name= "txbEmpleadosId" Width="200"></TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock>Nombre:</TextBlock>
@@ -54,11 +55,11 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <WrapPanel Grid.Row = "0" >
-                    <Button x:Name="btnMaterialesNuevo" Click="btnMaterialesNuevo_Click" >Nuevo</Button>
-                    <Button x:Name="btnMaterialesEditar" Click="btnMaterialesEditar_Click">Editar</Button>
-                    <Button x:Name="btnMaterialesGuardar" Click="btnMaterialesGuardar_Click" >Guardar</Button>
-                    <Button x:Name="btnMaterialesCancelar" Click="btnMaterialesCancelar_Click">Cancelar</Button>
-                    <Button x:Name ="btnMaterialesEliminar" Click="btnMaterialesEliminar_Click">Eliminar</Button> 
+                    <Button x:Name="BtnMaterialesNuevo" Click="BtnMaterialesNuevo_Click" >Nuevo</Button>
+                    <Button x:Name="BtnMaterialesEditar" Click="BtnMaterialesEditar_Click" >Editar</Button>
+                    <Button x:Name="BtnMaterialesGuardar" Click="BtnMaterialesGuardar_Click" >Guardar</Button>
+                    <Button x:Name="BtnMaterialesCancelar" Click="BtnMaterialesCancelar_Click" >Cancelar</Button>
+                    <Button x:Name ="BtnMaterialesEliminar" Click="BtnMaterialesEliminar_Click">Eliminar</Button> 
                 </WrapPanel>
                 <WrapPanel Grid.Row="1">
                     <StackPanel Orientation ="Horizontal">
@@ -81,7 +82,7 @@
                         <TextBlock x:Name="txbMaterialesArea"  Width ="200"></TextBlock>
                     </StackPanel>
                 </WrapPanel>
-                <DataGrid Name="dtgMateriales" Grid.Row="2" IsReadOnly="True"/> 
+                <DataGrid Name="dtgMateriales" Grid.Row="2" IsReadOnly="True"/>
             </Grid>
 
         </TabItem>
@@ -90,4 +91,3 @@
         </TabItem>
     </TabControl>
 </Window>
-

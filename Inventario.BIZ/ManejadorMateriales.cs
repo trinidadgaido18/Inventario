@@ -8,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace Inventario.BIZ
 {
-    public class ManejadorMateriales : IManejadorMateriales
+    public class ManejadorMateriales(IRepositorio<Material> repositorio) : IManejadorMateriales
     {
-        readonly IRepositorio<Material> repositorio;
-        public ManejadorMateriales(IRepositorio<Material> repositorio) 
-        {
-          this.repositorio = repositorio;  
-        }
+        readonly IRepositorio<Material> repositorio = repositorio;
 
         public List<Material> Listar => repositorio.Read;
 
@@ -37,9 +33,9 @@ namespace Inventario.BIZ
 
         public List<Material> MaterialesCategoria(string categoria)
         {
-#pragma warning disable CS8603 // Posible tipo de valor devuelto de referencia nulo
+
             return Listar.Where(e => e.Categoria == categoria).ToList(); 
-#pragma warning restore CS8603 // Posible tipo de valor devuelto de referencia nulo
+
         }
 
         public bool Modificar(Material entidad)

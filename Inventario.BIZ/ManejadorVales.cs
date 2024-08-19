@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace Inventario.BIZ
 {
-    public class ManejadorVales : IManejadorVales
+    public class ManejadorVales(IRepositorio<Vale> repositorio) : IManejadorVales
     {
-        readonly IRepositorio<Vale> repositorio;
-        public ManejadorVales(IRepositorio<Vale> repositorio)
-        {
-            this.repositorio = repositorio; 
-        }
+        readonly IRepositorio<Vale> repositorio = repositorio;
+
         public List<Vale> Listar => repositorio.Read; 
 
         public bool Agregar(Vale entidad)

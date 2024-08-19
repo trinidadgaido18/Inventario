@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Inventario.COMMON\Inventario.COMMON.csproj" />
-    <ProjectReference Include="..\Inventario.DAL\Inventario.DAL.csproj" />
   </ItemGroup>
 
 </Project>

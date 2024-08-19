@@ -18,7 +18,7 @@ namespace Inventario.DAL
         {
             get
             {
-                List<Material> datos = new List<Material>();
+                List<Material> datos = [];
                 using (var db = new LiteDatabase(DBName))
                 {
                     datos = db.GetCollection<Material>(TableName).FindAll().ToList();
@@ -32,11 +32,9 @@ namespace Inventario.DAL
             entidad.Id = Guid.NewGuid().ToString();
             try
             {
-                using (var db = new LiteDatabase(DBName))
-                {
-                    var coleccion = db.GetCollection<Material>(TableName);
-                    coleccion.Insert(entidad);
-                }
+                using var db = new LiteDatabase(DBName);
+                var coleccion = db.GetCollection<Material>(TableName);
+                coleccion.Insert(entidad);
                 return true;
             }
             catch (Exception)
@@ -49,17 +47,15 @@ namespace Inventario.DAL
         {
             try
             {
-                using (var db = new LiteDatabase(DBName))
+                using var db = new LiteDatabase(DBName);
+                var coleccion = db.GetCollection<Material>(TableName);
+                var empleado = coleccion.FindOne(e => e.Id.Equals(id));
+                if (empleado != null)
                 {
-                    var coleccion = db.GetCollection<Material>(TableName);
-                    var empleado = coleccion.FindOne(e => e.Id.Equals(id));
-                    if (empleado != null)
-                    {
-                        coleccion.Delete(empleado.Id);
-                        return true;
-                    }
-                    return false;
+                    coleccion.Delete(empleado.Id);
+                    return true;
                 }
+                return false;
             }
             catch (Exception)
             {
@@ -71,11 +67,9 @@ namespace Inventario.DAL
         {
             try
             {
-                using (var db = new LiteDatabase(DBName))
-                {
-                    var coleccion = db.GetCollection<Material>(TableName);
-                    coleccion.Insert(entidadModificada);
-                }
+                using var db = new LiteDatabase(DBName);
+                var coleccion = db.GetCollection<Material>(TableName);
+                coleccion.Insert(entidadModificada);
                 return true;
             }
             catch (Exception)
