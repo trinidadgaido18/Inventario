@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Inventario.GUI.Administrar
          Editar,
         }
        
-        
+       
 
 
         Accion accionEmpleados;   
@@ -37,13 +38,13 @@ namespace Inventario.GUI.Administrar
             PonerBotonesEnEdicion(false);
             LimpiarCamposDeEmpleados();
             ActualizarTablaEmpleados();
-            
+           
         }
 
         private void ActualizarTablaEmpleados()
         {
             dtgEmpleados.ItemsSource = null;
-            
+          
         }
 
         private void LimpiarCamposDeEmpleados()
@@ -130,7 +131,7 @@ namespace Inventario.GUI.Administrar
         }
     }
 
-    internal interface IManejadorEmpleados
-    {
-    }
+   
+
+  
 }

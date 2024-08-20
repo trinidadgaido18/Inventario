@@ -33,9 +33,9 @@ namespace Inventario.BIZ
 
         public List<Material> MaterialesCategoria(string categoria)
         {
-
-            return Listar.Where(e => e.Categoria == categoria).ToList(); 
-
+#pragma warning disable CS8603 // Posible tipo de valor devuelto de referencia nulo
+            return Listar.Where(e => e.Categoria == categoria).ToList();
+#pragma warning restore CS8603 // Posible tipo de valor devuelto de referencia nulo
         }
 
         public bool Modificar(Material entidad)

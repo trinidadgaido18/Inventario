@@ -51,7 +51,7 @@ namespace Inventario.DAL
                 var empleado = coleccion.FindOne(e => e.Id.Equals(id));
                 if (empleado != null)
                 {
-                    coleccion.Delete(empleado.Id);
+                    bool v = coleccion.Delete(empleado.Id);
                     return true;
                 }
                 return false;
@@ -63,7 +63,7 @@ namespace Inventario.DAL
         }
 
 
-        public bool UpDate( Empleado entidadModificada)
+        bool IRepositorio<Empleado>.UpDate(string Id, Empleado entidadModificada)
         {
             try
             {
@@ -78,7 +78,10 @@ namespace Inventario.DAL
             }
         }
 
-     
+        public bool UpDate(Empleado entidadModificada)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

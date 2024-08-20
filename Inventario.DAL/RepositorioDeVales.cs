@@ -11,14 +11,14 @@ namespace Inventario.DAL
 {
     public class RepositorioDeVales : IRepositorio<Vale>
     {
-        private readonly string DBName = " Inventario.db";
-        private readonly string TableName = " Vale";
+        private string DBName = " Inventario.db";
+        private string TableName = " Vale";
 
         public List<Vale> Read
         {
             get
             {
-                List<Vale> datos = [];
+                List<Vale> datos = new List<Vale>();
                 using (var db = new LiteDatabase(DBName))
                 {
                     datos = db.GetCollection<Vale>(TableName).FindAll().ToList();
@@ -32,9 +32,11 @@ namespace Inventario.DAL
             entidad.Id = Guid.NewGuid().ToString();
             try
             {
-                using var db = new LiteDatabase(DBName);
-                var coleccion = db.GetCollection<Vale>(TableName);
-                coleccion.Insert(entidad);
+                using (var db = new LiteDatabase(DBName))
+                {
+                    var coleccion = db.GetCollection<Vale>(TableName);
+                    coleccion.Insert(entidad);
+                }
                 return true;
             }
             catch (Exception)
@@ -47,15 +49,17 @@ namespace Inventario.DAL
         {
             try
             {
-                using var db = new LiteDatabase(DBName);
-                var coleccion = db.GetCollection<Vale>(TableName);
-                var empleado = coleccion.FindOne(e => e.Id.Equals(id));
-                if (empleado != null)
+                using (var db = new LiteDatabase(DBName))
                 {
-                    coleccion.Delete(empleado.Id);
-                    return true;
+                    var coleccion = db.GetCollection<Vale>(TableName);
+                    var empleado = coleccion.FindOne(e => e.Id.Equals(id));
+                    if (empleado != null)
+                    {
+                        coleccion.Delete(empleado.Id);
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
             }
             catch (Exception)
             {
@@ -67,15 +71,22 @@ namespace Inventario.DAL
         {
             try
             {
-                using var db = new LiteDatabase(DBName);
-                var coleccion = db.GetCollection<Vale>(TableName);
-                coleccion.Insert(entidadModificada);
+                using (var db = new LiteDatabase(DBName))
+                {
+                    var coleccion = db.GetCollection<Empleado>(TableName);
+                    coleccion.Insert((IEnumerable<Empleado>)entidadModificada);
+                }
                 return true;
             }
             catch (Exception)
             {
                 return false;
             }
+        }
+
+        bool IRepositorio<Vale>.Create(Empleado entidad)
+        {
+            throw new NotImplementedException();
         }
     }
 }

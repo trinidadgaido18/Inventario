@@ -1,6 +1,4 @@
-﻿using Inventario.COMMON.Entidades;
-using Inventario.COMMON.Interfaces;
-using LiteDB;
+﻿using LiteDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,5 +75,25 @@ namespace Inventario.DAL
                 return false;
             }
         }
+
+        bool IRepositorio<Material>.Create(Empleado entidad)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    internal class Empleado
+    {
+    }
+
+    public class Material
+    {
+        public string Id { get; internal set; }
+    }
+
+    public interface IRepositorio<T>
+    {
+        bool Create(Empleado entidad);
+        bool UpDate(string Id, Empleado entidadModificada);
     }
 }
